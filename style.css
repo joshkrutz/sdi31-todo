@@ -1,0 +1,13 @@
+.completed input {
+  text-decoration: line-through;
+  color: green;
+}
+
+input[type="checkbox"]{
+  accent-color: green;
+}
+
+input[type="text"]{
+  border: none;
+  outline: none;
+}

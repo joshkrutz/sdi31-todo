@@ -1,0 +1,15 @@
+  <!-- {
+    todo-items: [
+      {
+        description: "",
+        isComplete: bool
+      },
+       {
+        description: "",
+        isComplete: bool
+      },
+    ]
+  }
+
+  JSON.stringify(obj) 
+  parseJSON -->
