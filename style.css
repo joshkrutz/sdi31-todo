@@ -1,13 +1,55 @@
-.completed input {
-  text-decoration: line-through;
-  color: green;
+:root{
+  --foreground: white;
+  --background: rgb(11, 11, 11);
+  --green: rgb(121, 255, 121);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+h1{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif
+}
+
+ul {
+  max-width: 400px;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+input {
+  outline: none;
 }
 
 input[type="checkbox"]{
-  accent-color: green;
+  accent-color: var(--green);
 }
 
 input[type="text"]{
   border: none;
-  outline: none;
+  color: var(--foreground);
+  border-bottom: 1px solid gray;
+  background: var(--background);
+}
+
+.completed input {
+  text-decoration: line-through;
+  color: var(--green);
 }
