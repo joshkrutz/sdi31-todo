@@ -1,0 +1,23 @@
+{
+  "name": "sdi31-todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshkrutz/sdi31-todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshkrutz/sdi31-todo/issues"
+  },
+  "homepage": "https://github.com/joshkrutz/sdi31-todo#readme",
+  "description": "",
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}

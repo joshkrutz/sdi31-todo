@@ -1,12 +1,13 @@
 let list = document.querySelector("#to-do-list");
+let toDoData = {};
 
 // Event Listeners
 list.addEventListener("click", (e) => {
   let closestCheck = e.target.closest("input[type='checkbox']");
-  if (closestCheck === null){
+  if (closestCheck === null) {
     return;
   }
-  
+
   let parent = closestCheck.parentElement;
   let checked = closestCheck.checked;
   if (checked) {
@@ -18,7 +19,7 @@ list.addEventListener("click", (e) => {
 
 list.addEventListener("keyup", (e) => {
   switch (e.key) {
-    case "Enter": 
+    case "Enter":
       addItem();
       break;
     case "Backspace":
@@ -28,15 +29,31 @@ list.addEventListener("keyup", (e) => {
   }
 });
 
+//TODO make this a factory function, supply a Node element in place of list
+list.addEventListener("blur", (e) => {
+  let closestCheck = e.target.closest("input[type='text']");
+  if (closestCheck === null) {
+    return;
+  }
+  document.cookie = "object=" + JSON.stringify(list);
+  console.log("I WAS CALLED");
+});
+
 window.onload = () => {
   if (list === undefined) {
     return;
   }
-  
+
+  if (document.cookie !== undefined) {
+    //list = JSON.parseJSON(document.cookie)
+    // list = decodeURIComponent(document.cookie).split(';');
+    // console.log(document.cookie);
+    // console.log(list);
+  }
+
   let template = list.querySelector("li");
   template.querySelector("input[type='text']").focus();
 };
-
 
 function addItem() {
   if (list === undefined) {
@@ -57,41 +74,9 @@ function addItem() {
   template.querySelector("input[type='text']").focus();
 }
 
-function checkKeyPress(keyPressEvent) {
-  if (keyPressEvent.key === "Enter") {
-    addItem();
-  }
-  if (keyPressEvent.key === "Delete" || keyPressEvent.key === "Backspace") {
-    deleteItem(keyPressEvent);
-  }
-  
-}
-
-// function toggleCompleteTask(eventToToggle) {
-//   let parent = eventToToggle.target.parentElement;
-//   let checked = eventToToggle.target.checked;
-//   if (checked) {
-//     parent.classlist.add("completed");
-//   } else {
-//     parent.classlist.remove("completed");
-//   }
-// }
-
 function deleteItem(itemToDelete) {
-  // let list = document.querySelector("#to-do-list");
-  
-  // let individuallistItem = textInput.parentElement;
-  
-  // if (individuallistItem === undefined){
-    //   return;
-    // }
-    
-    // if (list === undefined) {
-      //   return;
-      // }
-
   let textInput = itemToDelete.querySelector("input[type='text']");
-      
+
   if (list.querySelectorAll("li").length <= 1) {
     return;
   }
@@ -104,16 +89,4 @@ function deleteItem(itemToDelete) {
   let listOfListItems = list.querySelectorAll("li");
   let previousListItem = listOfListItems[listOfListItems.length - 1];
   previousListItem.querySelector("input[type='text']").focus();
-
-  // // var paragraph = document.createElement("p");
-  // let template = list.querySelector("li").cloneNode("true");
-  // for (let i of template.childNodes){
-  //   // console.log(i.nodeName);
-  //   if (i.nodeName === "INPUT"){
-  //     i.value = "";
-  //     i.checked = false;
-  //   }
-  // }
-  // template.classlist.remove("completed")
-  // list.appendChild(template);
 }
